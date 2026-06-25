@@ -1,4 +1,5 @@
 import ctypes
+import os
 import sys
 import tkinter as tk
 from ctypes import wintypes
@@ -28,10 +29,11 @@ class OverlayApp:
         self.root.attributes("-alpha", self.overlay_alpha)
         self.root.attributes("-transparentcolor", "#00ff00")
 
+        script_dir = os.path.dirname(os.path.abspath(__file__))
         self.images = {
-            "ENG": tk.PhotoImage(file="ENG.png"),
-            "SPA": tk.PhotoImage(file="ES.png"),
-            "RUS": tk.PhotoImage(file="RU.png")
+            "ENG": tk.PhotoImage(file=os.path.join(script_dir, "ENG.png")),
+            "SPA": tk.PhotoImage(file=os.path.join(script_dir, "ES.png")),
+            "RUS": tk.PhotoImage(file=os.path.join(script_dir, "RU.png"))
         }
 
         self.canvas = tk.Canvas(self.root, bg="#00ff00", highlightthickness=0)
